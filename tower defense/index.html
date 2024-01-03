@@ -1,0 +1,28 @@
+<style>
+body{
+    background-color: black;
+
+}
+#main{
+    filter: blur(8px);
+    left: 50%;
+}
+#start{
+    z-index: 2;
+    position: absolute;
+    bottom: 40%;
+    left: 20%;
+    background-color: transparent;
+    border-color: transparent;
+    font-size: xx-large;
+    filter: none
+    
+}
+</style>
+
+
+<canvas style="z-index: 1" id="main"></canvas>
+<button id="start"; onclick="StartGame()"><img src="img/play.png" width="140px" height="70px"/></button>
+<script src="js/waypoints.js"></script>
+<script src="js/index.js"></script>
+

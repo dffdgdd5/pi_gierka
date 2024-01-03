@@ -1,0 +1,95 @@
+<!-- <button onclick="location.href='index.html'">Start</button> -->
+<style>
+body{
+position: fixed;
+width: 100%;
+height: 100%;
+z-index: 1;
+}
+#btd6{
+    filter: blur(7px);
+    z-index: 1;
+   
+}
+#mainbody{
+width: 72%;
+left: 12.5%;
+top: 10%;
+height: 70%;
+background-color: black;
+z-index: 2;
+position: absolute;
+color: wheat;
+}  
+#bg{
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    position: absolute;
+}
+#play{
+    z-index: 2;
+    position: absolute;
+    bottom: 50%;
+    left: 45%;
+    width: 15%;
+    font-size: xx-large;
+}
+#map1,#map2,#map3{
+    z-index: 3;
+    top: 40%;
+    width: 25%;
+    height: 25%;
+    background-color: black;
+    position: absolute;
+    visibility: hidden;
+    
+}
+#btn {
+    width: 100%;
+    height: 100%;
+}
+#map1{
+    margin-left: 7%;
+    
+}
+#map2{
+    margin-left: 38%;
+}
+#map3{
+    margin-left: 70%;   
+}
+</style>
+<body>
+    <img id ='btd6' src="img/background-btd6-ripoff.png" height="100%" width="100%"/>
+<div id="mainbody">
+
+    <div id="backgroundimg"> <img id="bg" src="img/tempmenu.png"/> </div>
+    <button id="play" onclick="start()">Start</button>
+    <div id="map1"> <button id="btn" onclick="location.href='index.html'"><img src="img/map.png" width="100%"height="100%"></button></div>
+    <div id="map2"><img src="img/comingsoon.png" width="100%"height="100%"></div>
+    <div id="map3"><img src="img/comingsoon.png" width="100%"height="100%"></div>
+
+</div>
+
+
+</body>
+
+<script>
+    const btn = document.getElementById('play')
+    const map = document.getElementById('map1')
+    const map2 = document.getElementById('map2')
+    const map3 = document.getElementById('map3')
+btn.addEventListener('click', () => {
+    btn.style.display = 'none';
+    map.style.visibility = 'visible'
+    map2.style.visibility = 'visible'
+    map3.style.visibility = 'visible'
+})
+
+
+</script>
+
+
+<script src="js/waypoints.js"></script>
+<script src="js/index.js"></script>

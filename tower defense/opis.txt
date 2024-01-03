@@ -1,0 +1,6 @@
+na poczatku swojego projektu utworzyłem mapę przy uzyciu programu "Tiled" wykorzystując darmowe assety z internetu 
+następnie dodałem waypointy by wrogie jednostki miały ścieżkę do poruszania się i zimportowałem
+ją do pliku javascript.
+przy pomocy poradnika zacząłem tworzyć grę tower defense, lecz poradnikowi brakowało 
+sporej części elementów które chciałem wprowadzić do swojej gry dlatego zacząłem rozbudowywać kod 
+o rzeczy które chciałem dodac
