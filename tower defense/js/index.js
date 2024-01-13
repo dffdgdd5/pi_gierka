@@ -69,6 +69,7 @@ const buildings = []
 let activeTile = undefined
 let enemyCount = 3
 let hearts = 10
+let coins = 100
 spawnEnemies(enemyCount)
 
 function animation() {
@@ -81,7 +82,7 @@ function animation() {
         if(enemy.position.x > canvas.width) {
             hearts -= 1
             enemies.splice(i, 1)
-            console.log(hearts)
+            document.querySelector('#heartsnumber').innerHTML = hearts
             if (hearts === 0 ) {
 
                 console.log('game over')
@@ -127,6 +128,8 @@ buildings.forEach(Building1 => {
                     return projectile.enemy === enemy
                 })
                if(enemyIndex > -1) {
+                 coins+=25
+                 document.querySelector('#coinsnumber').innerHTML = coins
                 enemies.splice(enemyIndex, 1)
                 Building1.projectiles.splice(0, 1000)
                }
@@ -148,7 +151,9 @@ const mouse = {
 
 
 canvas.addEventListener('click', (event) => {
-    if (activeTile && !activeTile.isOccupied){
+    if (activeTile && !activeTile.isOccupied && coins - 50 >= 0){
+        coins -= 50
+        document.querySelector('#coinsnumber').innerHTML = coins
         buildings.push(new Building1({
             position:{
                 x: activeTile.position.x,
@@ -164,7 +169,7 @@ canvas.addEventListener('click', (event) => {
 window.addEventListener('mousemove', (event) => {
     mouse.x = event.clientX
     mouse.y = event.clientY
-    
+ 
     activeTile = null
     for(let i = 0; i <placementTiles.length; i++){
         const tile = placementTiles[i]

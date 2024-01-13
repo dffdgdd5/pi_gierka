@@ -14,9 +14,11 @@ class PlacementTile{
         this.draw()
 
         if(mouse.x > this.position.x &&
-           mouse.x < this.position.x + this.size&& 
+          mouse.x < this.position.x + this.size&& 
            mouse.y > this.position.y && 
-           mouse.y < this.position.y + this.size) {
+           mouse.y < this.position.y + this.size/2
+         ) 
+         {
         
             this.color = 'white'
         } else this.color = 'rgba(255,255,255,0.15'
@@ -66,7 +68,7 @@ class Enemy1 {
         const xDistance = waypoint.x - this.center.x
         const angle = Math.atan2(yDistance, xDistance)
         
-        const speed = 3
+        const speed = 2
 
         this.velocity.x = Math.cos(angle) * speed
         this.velocity.y = Math.sin(angle) * speed
@@ -95,8 +97,11 @@ class Projectile {
     }
     this.enemy = enemy
     this.radius = 10
+    this.image = new Image()
+    this.image.src = 'img/projectile.png'
  }
  draw(){
+    c.drawImage(this.image,this.position.x,this.position.y)
     c.beginPath()
     c.arc(this.position.x,this.position.y, this.radius,0,Math.PI*2)
     c.fillStyle = 'orange'
@@ -109,8 +114,8 @@ class Projectile {
         this.enemy.center.y - this.position.y, 
         this.enemy.center.x - this.position.x
         )
-        this.velocity.x = Math.cos(angle) * 4
-        this.velocity.y = Math.sin(angle) * 4
+        this.velocity.x = Math.cos(angle) * 6
+        this.velocity.y = Math.sin(angle) * 6
 
         this.position.x += this.velocity.x
         this.position.y += this.velocity.y

@@ -4,3 +4,7 @@ ją do pliku javascript.
 przy pomocy poradnika zacząłem tworzyć grę tower defense, lecz poradnikowi brakowało 
 sporej części elementów które chciałem wprowadzić do swojej gry dlatego zacząłem rozbudowywać kod 
 o rzeczy które chciałem dodac
+
+napotkany problem:
+napisalem program zostawilem na pare dni nagle canva zmienila swoj rozmiar, co dodało scrolla do strony i powodowało rozjechanie sie funkcji mousemove odpowiadajacej za kładzenie
+wieżyczek, naprawilem to usuwajac scrolla i dajac rozmiar canvy na 100% width i height, mousemove nadal jest lekko rozjechany ale umozliwia kładzenie wiezyczek na wybranych polach
