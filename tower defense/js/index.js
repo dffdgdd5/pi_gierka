@@ -53,25 +53,48 @@ image.src = 'img/map.png'
 
 
 const enemies = []
-for (let i = 1; i <= 10; i++){
-    const xOffset = i*150
-    enemies.push(new Enemy1({
-        position: {x: waypoints[0].x - xOffset, y: waypoints[0].y }
-    }))
+
+
+function spawnEnemies(spawnCount){
+    for (let i = 1; i < spawnCount + 1; i++){
+        const xOffset = i*150
+        enemies.push(new Enemy1({
+            position: {x: waypoints[0].x - xOffset, y: waypoints[0].y }
+        }))
+    }
 }
+
 
 const buildings = []
 let activeTile = undefined
+let enemyCount = 3
+let hearts = 10
+spawnEnemies(enemyCount)
 
 function animation() {
-    requestAnimationFrame(animation)
+    const animationId = requestAnimationFrame(animation)
     c.drawImage(image,0,0)
     for( let i = enemies.length - 1; i >= 0; i--){
         const enemy = enemies[i]
-    
         enemy.update()
-    
+
+        if(enemy.position.x > canvas.width) {
+            hearts -= 1
+            enemies.splice(i, 1)
+            console.log(hearts)
+            if (hearts === 0 ) {
+
+                console.log('game over')
+                cancelAnimationFrame(animationId)
+                document.querySelector('#over').style.display = 'flex'
+            }
+        }
 }
+           //tracking total amount of enemies
+           if(enemies.length === 0) {
+            enemyCount += 3
+            spawnEnemies(enemyCount)
+        }
 placementTiles.forEach(tile => {
     tile.update(mouse)
 })
@@ -98,6 +121,7 @@ buildings.forEach(Building1 => {
         // projectile hits enemy
         if (distance < projectile.enemy.radius + projectile.radius+15) {
             projectile.enemy.health -= 20
+            // enemy health and removal
             if(projectile.enemy.health <= 0){
              const enemyIndex = enemies.findIndex( (enemy) =>{
                     return projectile.enemy === enemy
@@ -107,6 +131,7 @@ buildings.forEach(Building1 => {
                 Building1.projectiles.splice(0, 1000)
                }
             }
+ 
             Building1.projectiles.splice(i, 1)
         }
        
