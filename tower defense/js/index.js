@@ -70,6 +70,7 @@ let activeTile = undefined
 let enemyCount = 3
 let hearts = 10
 let coins = 100
+let waves = 1
 spawnEnemies(enemyCount)
 
 function animation() {
@@ -90,9 +91,16 @@ function animation() {
                 document.querySelector('#over').style.display = 'flex'
             }
         }
-}
-           //tracking total amount of enemies
+}       
+ 
+           //tracking total amount of enemies and waves
            if(enemies.length === 0) {
+            waves += 1
+            document.querySelector('#waves').innerHTML = waves
+            if(waves === 10){
+                cancelAnimationFrame(animationId)
+                document.querySelector('#win').style.display = 'flex'
+             }
             enemyCount += 3
             spawnEnemies(enemyCount)
         }
